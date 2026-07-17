@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { FiUser, FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
+import { FiUser, FiMail, FiLock, FiEye, FiEyeOff, FiPhone } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 import { FaApple } from 'react-icons/fa'
 import useAuthStore from '../store/useAuthStore'
@@ -11,6 +11,7 @@ export default function RegisterPage() {
   const { register, isLoading } = useAuthStore()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [showPass, setShowPass] = useState(false)
 
@@ -19,6 +20,8 @@ export default function RegisterPage() {
     if (password.length < 6) { toast.error('Password must be at least 6 characters'); return }
     try {
       await register(name, email, password)
+      // Store phone locally since backend doesn't have a phone field yet
+      if (phone) localStorage.setItem('userPhone', phone)
       toast.success('Account created!')
       navigate('/')
     } catch (err) {
@@ -46,6 +49,7 @@ export default function RegisterPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Full Name */}
             <div>
               <label className="text-sm font-medium text-gray-700 mb-1.5 block">Full Name</label>
               <div className="relative">
@@ -61,6 +65,7 @@ export default function RegisterPage() {
               </div>
             </div>
 
+            {/* Email */}
             <div>
               <label className="text-sm font-medium text-gray-700 mb-1.5 block">Email</label>
               <div className="relative">
@@ -69,13 +74,30 @@ export default function RegisterPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="john@doe.com"
+                  placeholder="john@example.com"
                   required
                   className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
             </div>
 
+            {/* Phone Number */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-1.5 block">Phone Number</label>
+              <div className="relative">
+                <FiPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="+251 91 234 5678"
+                  required
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+
+            {/* Password */}
             <div>
               <label className="text-sm font-medium text-gray-700 mb-1.5 block">Password</label>
               <div className="relative">
@@ -92,6 +114,7 @@ export default function RegisterPage() {
                   {showPass ? <FiEyeOff size={16} /> : <FiEye size={16} />}
                 </button>
               </div>
+              <p className="text-xs text-gray-400 mt-1">Minimum 6 characters</p>
             </div>
 
             <button

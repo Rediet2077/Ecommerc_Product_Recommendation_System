@@ -1,0 +1,65 @@
+services:
+
+  # ── Backend (FastAPI) ────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: shopease-backend
+    restart: unless-stopped
+
+    environment:
+      # Override these via a .env file or secrets manager in production
+      DATABASE_URL: "sqlite:////app/data/ecommerce.db"
+      SECRET_KEY: "${SECRET_KEY:-change-me-in-production}"
+      ALGORITHM: "HS256"
+      ACCESS_TOKEN_EXPIRE_MINUTES: "10080"
+
+    volumes:
+      # Persist the SQLite database outside the container
+      - db_data:/app/data
+
+    networks:
+      - shopease_net
+
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+    # Only expose backend port on localhost — nginx proxies /api
+    ports:
+      - "8000:8000"
+
+  # ── Frontend (nginx serving React build) ────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # API is proxied through nginx, so this resolves in-browser via same origin
+        VITE_API_URL: ""
+    container_name: shopease-frontend
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+    networks:
+      - shopease_net
+
+# ── Volumes ───────────────────────────────────────────────────────────────────
+volumes:
+  db_data:
+    driver: local
+
+# ── Networks ──────────────────────────────────────────────────────────────────
+networks:
+  shopease_net:
+    driver: bridge
