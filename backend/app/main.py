@@ -27,15 +27,23 @@ app = FastAPI(
 
 
 # CORS configuration
+# Read allowed origins from env so production URLs can be injected without code changes
+import os
+
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "")
+_extra_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+
+_default_origins = [
+    "http://localhost:5173",   # Vite frontend
+    "http://localhost:3000",   # Alternative frontend
+    "http://127.0.0.1:5173",
+    "http://localhost:80",     # Docker nginx
+    "http://localhost",        # Docker nginx
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",   # Vite frontend
-        "http://localhost:3000",   # Alternative frontend
-        "http://127.0.0.1:5173",
-        "http://localhost:80",     # Docker nginx
-        "http://localhost",        # Docker nginx
-    ],
+    allow_origins=_default_origins + _extra_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -18,11 +18,17 @@ FROM python:3.11-slim AS runtime
 
 WORKDIR /app
 
+# Install runtime system libraries required by numpy/scikit-learn (libgomp)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy installed packages from builder
 COPY --from=builder /install /usr/local
 
 # Copy application source
 COPY app/ ./app/
+COPY ML/ ./ML/
 
 # Persistent volume mount-point for the SQLite database file
 VOLUME ["/app/data"]
@@ -36,7 +42,8 @@ ENV DATABASE_URL="sqlite:////app/data/ecommerce.db" \
     ALGORITHM="HS256" \
     ACCESS_TOKEN_EXPIRE_MINUTES="10080" \
     PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app
 
 # Run with uvicorn
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
