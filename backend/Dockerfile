@@ -30,14 +30,13 @@ COPY --from=builder /install /usr/local
 COPY app/ ./app/
 COPY ML/ ./ML/
 
-# Persistent volume mount-point for the SQLite database file
-VOLUME ["/app/data"]
-
 # Expose FastAPI port
 EXPOSE 8000
 
-# Environment defaults (can be overridden via docker-compose or env file)
-ENV DATABASE_URL="sqlite:////app/data/ecommerce.db" \
+# Environment defaults (can be overridden via Render dashboard or docker-compose)
+# DATABASE_URL defaults to a local path inside the container — override with
+# a persistent disk path (e.g. sqlite:////app/data/ecommerce.db) when a disk is attached.
+ENV DATABASE_URL="sqlite:///./ecommerce.db" \
     SECRET_KEY="change-me-in-production" \
     ALGORITHM="HS256" \
     ACCESS_TOKEN_EXPIRE_MINUTES="10080" \
