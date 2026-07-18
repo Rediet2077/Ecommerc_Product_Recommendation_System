@@ -4,7 +4,7 @@ from .auth import hash_password
 import random
 
 PRODUCTS_DATA = [
-    # Electronics (category index 0)
+    # ── Electronics (cat 0) ───────────────────────────────────────────────────
     {"name": "Wireless Headphones", "brand": "Sony", "price": 3200, "original_price": 6500, "cat": 0, "stock": 50,
      "description": "High quality wireless headphones with active noise cancellation and 30-hour battery life.",
      "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"},
@@ -41,7 +41,32 @@ PRODUCTS_DATA = [
     {"name": "4K Monitor 27\"", "brand": "LG", "price": 22000, "original_price": 30000, "cat": 0, "stock": 18,
      "description": "27-inch 4K UHD IPS monitor with HDR400 and USB-C connectivity.",
      "image_url": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400"},
-    # Fashion (category index 1)
+    {"name": "Portable SSD 1TB", "brand": "Samsung", "price": 5500, "original_price": 7500, "cat": 0, "stock": 35,
+     "description": "Ultra-fast portable SSD with 1050MB/s read speed, USB 3.2 Gen 2 interface.",
+     "image_url": "https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=400"},
+    {"name": "Noise Cancelling Earphones", "brand": "Bose", "price": 9800, "original_price": 14000, "cat": 0, "stock": 25,
+     "description": "Premium in-ear noise cancelling earphones with 6-hour battery and transparency mode.",
+     "image_url": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400"},
+    {"name": "Webcam 4K HD", "brand": "Logitech", "price": 3200, "original_price": 4500, "cat": 0, "stock": 40,
+     "description": "4K streaming webcam with auto-focus, built-in mic, and HDR for crystal-clear video calls.",
+     "image_url": "https://images.unsplash.com/photo-1587826080692-f439cd0b70a1?w=400"},
+    {"name": "Graphics Tablet", "brand": "Wacom", "price": 6500, "original_price": 9000, "cat": 0, "stock": 22,
+     "description": "Professional drawing tablet with 8192 pressure levels and tilt recognition.",
+     "image_url": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400"},
+    {"name": "Smart Home Speaker", "brand": "Amazon", "price": 2800, "original_price": 3800, "cat": 0, "stock": 60,
+     "description": "Echo smart speaker with Alexa, premium sound, and smart home hub capabilities.",
+     "image_url": "https://images.unsplash.com/photo-1543512214-318c7553f230?w=400"},
+    {"name": "Power Bank 20000mAh", "brand": "Anker", "price": 1900, "original_price": 2800, "cat": 0, "stock": 75,
+     "description": "20000mAh slim power bank with 65W PD fast charging and dual USB-A ports.",
+     "image_url": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400"},
+    {"name": "Gaming Headset 7.1", "brand": "HyperX", "price": 3800, "original_price": 5500, "cat": 0, "stock": 33,
+     "description": "7.1 surround sound gaming headset with noise-cancelling mic and memory foam earpads.",
+     "image_url": "https://images.unsplash.com/photo-1599669454699-248893623440?w=400"},
+    {"name": "Tablet 10-inch", "brand": "Lenovo", "price": 12000, "original_price": 17000, "cat": 0, "stock": 28,
+     "description": "10-inch Android tablet with 2K display, 6GB RAM, 128GB storage and stylus support.",
+     "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400"},
+
+    # ── Fashion (cat 1) ───────────────────────────────────────────────────────
     {"name": "Slim Fit Chinos", "brand": "Zara", "price": 1200, "original_price": 1800, "cat": 1, "stock": 70,
      "description": "Classic slim-fit chinos made from premium stretch cotton, perfect for casual wear.",
      "image_url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"},
@@ -72,7 +97,26 @@ PRODUCTS_DATA = [
     {"name": "Tote Bag Canvas", "brand": "Fossil", "price": 1800, "original_price": 2800, "cat": 1, "stock": 65,
      "description": "Large canvas tote bag with interior pockets and zip closure, great for daily use.",
      "image_url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400"},
-    # Home (category index 2)
+    {"name": "Denim Jacket", "brand": "Levi's", "price": 3500, "original_price": 5200, "cat": 1, "stock": 38,
+     "description": "Classic denim jacket with button closure, chest pockets and a relaxed fit.",
+     "image_url": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400"},
+    {"name": "Formal Dress Shirt", "brand": "Calvin Klein", "price": 1800, "original_price": 2600, "cat": 1, "stock": 50,
+     "description": "Slim-fit formal dress shirt in 100% cotton with spread collar, perfect for office wear.",
+     "image_url": "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=400"},
+    {"name": "High-Waist Jeans", "brand": "Zara", "price": 2200, "original_price": 3200, "cat": 1, "stock": 55,
+     "description": "Flattering high-waist skinny jeans in stretch denim with five-pocket styling.",
+     "image_url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400"},
+    {"name": "Crossbody Bag", "brand": "Michael Kors", "price": 5500, "original_price": 8000, "cat": 1, "stock": 22,
+     "description": "Genuine leather crossbody bag with adjustable strap and gold-tone hardware.",
+     "image_url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400"},
+    {"name": "Wool Scarf", "brand": "Burberry", "price": 2800, "original_price": 4200, "cat": 1, "stock": 30,
+     "description": "Soft merino wool scarf in classic plaid pattern, 180cm length.",
+     "image_url": "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400"},
+    {"name": "Sports Bra", "brand": "Nike", "price": 1200, "original_price": 1800, "cat": 1, "stock": 65,
+     "description": "Medium-support sports bra with moisture-wicking fabric and racerback design.",
+     "image_url": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400"},
+
+    # ── Home (cat 2) ──────────────────────────────────────────────────────────
     {"name": "Coffee Maker", "brand": "Nespresso", "price": 4800, "original_price": 7500, "cat": 2, "stock": 35,
      "description": "Single-serve espresso machine with built-in milk frother and 19-bar pressure pump.",
      "image_url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400"},
@@ -103,7 +147,26 @@ PRODUCTS_DATA = [
     {"name": "Scented Candles Set", "brand": "Yankee", "price": 750, "original_price": 1100, "cat": 2, "stock": 80,
      "description": "Set of 3 hand-poured soy wax candles in lavender, vanilla and sandalwood scents.",
      "image_url": "https://images.unsplash.com/photo-1603905616625-5bb07a7a5b34?w=400"},
-    # Beauty (category index 3)
+    {"name": "Robot Vacuum Cleaner", "brand": "iRobot", "price": 18500, "original_price": 25000, "cat": 2, "stock": 14,
+     "description": "Smart robot vacuum with auto-mapping, HEPA filter, and 90-minute battery life.",
+     "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"},
+    {"name": "Microwave Oven 25L", "brand": "LG", "price": 7500, "original_price": 10500, "cat": 2, "stock": 20,
+     "description": "25L solo microwave with 10 power levels, defrost function and child safety lock.",
+     "image_url": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400"},
+    {"name": "Bamboo Cutting Board Set", "brand": "OXO", "price": 980, "original_price": 1400, "cat": 2, "stock": 65,
+     "description": "Set of 3 eco-friendly bamboo cutting boards with juice groove and non-slip feet.",
+     "image_url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400"},
+    {"name": "Air Fryer 5L", "brand": "Philips", "price": 9500, "original_price": 13000, "cat": 2, "stock": 30,
+     "description": "5L digital air fryer with 7 presets, rapid air technology and dishwasher-safe basket.",
+     "image_url": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400"},
+    {"name": "Shower Curtain Set", "brand": "IKEA", "price": 580, "original_price": 850, "cat": 2, "stock": 90,
+     "description": "Waterproof polyester shower curtain with 12 rings, available in 5 colors.",
+     "image_url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400"},
+    {"name": "Indoor Plant Pot Set", "brand": "IKEA", "price": 420, "original_price": 650, "cat": 2, "stock": 110,
+     "description": "Set of 3 ceramic plant pots with drainage holes in white, grey and terracotta.",
+     "image_url": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400"},
+
+    # ── Beauty (cat 3) ────────────────────────────────────────────────────────
     {"name": "Face Moisturizer SPF 50", "brand": "Cetaphil", "price": 950, "original_price": 1400, "cat": 3, "stock": 75,
      "description": "Daily face moisturizer with SPF 50 protection, suitable for all skin types.",
      "image_url": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"},
@@ -128,7 +191,29 @@ PRODUCTS_DATA = [
     {"name": "Sunscreen SPF 100", "brand": "Neutrogena", "price": 1200, "original_price": 1800, "cat": 3, "stock": 50,
      "description": "Broad spectrum SPF 100 sunscreen, water resistant, lightweight and non-greasy.",
      "image_url": "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400"},
-    # Sports (category index 4)
+    {"name": "Retinol Night Cream", "brand": "RoC", "price": 2200, "original_price": 3200, "cat": 3, "stock": 42,
+     "description": "Anti-aging retinol night cream that visibly reduces wrinkles and firms skin overnight.",
+     "image_url": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"},
+    {"name": "Micellar Cleansing Water", "brand": "Garnier", "price": 580, "original_price": 850, "cat": 3, "stock": 90,
+     "description": "Gentle micellar water removes makeup and cleanses skin in one step, no rinsing needed.",
+     "image_url": "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400"},
+    {"name": "Eyebrow Pencil Duo", "brand": "NYX", "price": 650, "original_price": 950, "cat": 3, "stock": 75,
+     "description": "Micro-precision eyebrow pencil with spoolie brush, long-lasting and smudge-proof.",
+     "image_url": "https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=400"},
+    {"name": "Facial Sheet Mask Pack", "brand": "Innisfree", "price": 480, "original_price": 700, "cat": 3, "stock": 120,
+     "description": "Pack of 10 hydrating sheet masks with green tea extract for glowing skin.",
+     "image_url": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400"},
+    {"name": "Electric Face Brush", "brand": "Foreo", "price": 4500, "original_price": 6500, "cat": 3, "stock": 28,
+     "description": "Silicone sonic face cleansing brush, waterproof, 16 intensity levels.",
+     "image_url": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"},
+    {"name": "Nail Polish Set", "brand": "OPI", "price": 900, "original_price": 1300, "cat": 3, "stock": 65,
+     "description": "Set of 6 long-lasting nail polishes in trending shades with chip-resistant formula.",
+     "image_url": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400"},
+    {"name": "Hair Straightener", "brand": "GHD", "price": 7500, "original_price": 11000, "cat": 3, "stock": 20,
+     "description": "Professional ceramic hair straightener with floating plates and auto sleep mode.",
+     "image_url": "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400"},
+
+    # ── Sports (cat 4) ────────────────────────────────────────────────────────
     {"name": "Yoga Mat Premium", "brand": "Gaiam", "price": 1600, "original_price": 2600, "cat": 4, "stock": 100,
      "description": "6mm thick non-slip yoga mat with alignment lines, includes carrying strap.",
      "image_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400"},
@@ -153,7 +238,29 @@ PRODUCTS_DATA = [
     {"name": "Cycling Helmet", "brand": "Bell", "price": 2800, "original_price": 4200, "cat": 4, "stock": 35,
      "description": "MIPS-equipped cycling helmet with 18 air vents and adjustable retention system.",
      "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"},
-    # Books (category index 5)
+    {"name": "Foam Roller", "brand": "TriggerPoint", "price": 1100, "original_price": 1600, "cat": 4, "stock": 75,
+     "description": "High-density foam roller for muscle recovery, deep tissue massage and myofascial release.",
+     "image_url": "https://images.unsplash.com/photo-1598971639058-fab3c3109a34?w=400"},
+    {"name": "Pull-Up Bar", "brand": "Iron Gym", "price": 1400, "original_price": 2000, "cat": 4, "stock": 55,
+     "description": "Doorframe pull-up bar, no screws needed, supports up to 120kg, folds flat.",
+     "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"},
+    {"name": "Swimming Goggles", "brand": "Speedo", "price": 680, "original_price": 1000, "cat": 4, "stock": 80,
+     "description": "Anti-fog UV-protection swimming goggles with adjustable strap and nose bridge.",
+     "image_url": "https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=400"},
+    {"name": "Kettlebell 16kg", "brand": "Rogue", "price": 2800, "original_price": 3800, "cat": 4, "stock": 30,
+     "description": "Cast iron kettlebell with powder-coat finish, flat base and color-coded weight bands.",
+     "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"},
+    {"name": "Gym Gloves", "brand": "Harbinger", "price": 750, "original_price": 1100, "cat": 4, "stock": 60,
+     "description": "Training gloves with wrist wrap support and padded palm for grip and protection.",
+     "image_url": "https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400"},
+    {"name": "Badminton Racket Set", "brand": "Yonex", "price": 2200, "original_price": 3200, "cat": 4, "stock": 35,
+     "description": "Set of 2 carbon-fibre badminton rackets with 6 shuttlecocks and carry bag.",
+     "image_url": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400"},
+    {"name": "Sports Water Bottle 1L", "brand": "Contigo", "price": 650, "original_price": 950, "cat": 4, "stock": 100,
+     "description": "Leak-proof 1L sports water bottle with one-click lid and carry loop.",
+     "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400"},
+
+    # ── Books (cat 5) ─────────────────────────────────────────────────────────
     {"name": "Atomic Habits", "brand": "James Clear", "price": 380, "original_price": 550, "cat": 5, "stock": 120,
      "description": "Bestselling guide to building good habits and breaking bad ones, over 10M copies sold.",
      "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400"},
@@ -175,7 +282,32 @@ PRODUCTS_DATA = [
     {"name": "Sapiens", "brand": "Yuval Noah Harari", "price": 420, "original_price": 600, "cat": 5, "stock": 70,
      "description": "A brief history of humankind exploring how Homo sapiens came to dominate the world.",
      "image_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400"},
-    # Toys (category index 6)
+    {"name": "Ikigai", "brand": "Hector Garcia", "price": 300, "original_price": 450, "cat": 5, "stock": 85,
+     "description": "Japanese secret to a long and happy life — finding your reason for being.",
+     "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400"},
+    {"name": "Deep Work", "brand": "Cal Newport", "price": 340, "original_price": 500, "cat": 5, "stock": 70,
+     "description": "Rules for focused success in a distracted world — essential for knowledge workers.",
+     "image_url": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400"},
+    {"name": "The 48 Laws of Power", "brand": "Robert Greene", "price": 390, "original_price": 580, "cat": 5, "stock": 65,
+     "description": "A guide to power dynamics, drawing on history's most ruthless strategists.",
+     "image_url": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400"},
+    {"name": "Thinking Fast and Slow", "brand": "Daniel Kahneman", "price": 360, "original_price": 540, "cat": 5, "stock": 60,
+     "description": "Nobel laureate's exploration of the two systems that drive human thought and decision-making.",
+     "image_url": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400"},
+    {"name": "The Lean Startup", "brand": "Eric Ries", "price": 330, "original_price": 490, "cat": 5, "stock": 55,
+     "description": "How today's entrepreneurs use continuous innovation to create successful businesses.",
+     "image_url": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400"},
+    {"name": "Man's Search for Meaning", "brand": "Viktor Frankl", "price": 260, "original_price": 390, "cat": 5, "stock": 80,
+     "description": "Psychiatrist's memoir of life in Nazi concentration camps and his path to finding purpose.",
+     "image_url": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400"},
+    {"name": "Steve Jobs Biography", "brand": "Walter Isaacson", "price": 450, "original_price": 650, "cat": 5, "stock": 50,
+     "description": "Definitive biography of Apple co-founder Steve Jobs based on exclusive interviews.",
+     "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400"},
+    {"name": "The 7 Habits", "brand": "Stephen Covey", "price": 310, "original_price": 460, "cat": 5, "stock": 90,
+     "description": "The 7 Habits of Highly Effective People — a proven framework for personal success.",
+     "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400"},
+
+    # ── Toys (cat 6) ──────────────────────────────────────────────────────────
     {"name": "LEGO City Set 500pcs", "brand": "LEGO", "price": 3200, "original_price": 4800, "cat": 6, "stock": 40,
      "description": "500-piece LEGO City set to build a police station, includes 4 mini-figures.",
      "image_url": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400"},
@@ -197,7 +329,32 @@ PRODUCTS_DATA = [
     {"name": "Board Game Monopoly", "brand": "Hasbro", "price": 1100, "original_price": 1600, "cat": 6, "stock": 45,
      "description": "Classic Monopoly board game with updated modern edition, for 2-8 players.",
      "image_url": "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400"},
-    # More (category index 7)
+    {"name": "LEGO Technic 1000pcs", "brand": "LEGO", "price": 6500, "original_price": 9500, "cat": 6, "stock": 25,
+     "description": "Advanced 1000-piece LEGO Technic sports car set with working steering and gearbox.",
+     "image_url": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400"},
+    {"name": "Drone with Camera", "brand": "DJI", "price": 8500, "original_price": 12000, "cat": 6, "stock": 18,
+     "description": "Mini drone with 1080p HD camera, 20-min flight time and gesture control. Ages 14+.",
+     "image_url": "https://images.unsplash.com/photo-1575450930695-56e72df5bacc?w=400"},
+    {"name": "Hot Wheels Track Set", "brand": "Mattel", "price": 1800, "original_price": 2600, "cat": 6, "stock": 50,
+     "description": "Epic loop and launch track set with 2 cars, compatible with all Hot Wheels vehicles.",
+     "image_url": "https://images.unsplash.com/photo-1559591935-c61e6e5e8d3e?w=400"},
+    {"name": "Science Experiment Kit", "brand": "National Geographic", "price": 1200, "original_price": 1800, "cat": 6, "stock": 45,
+     "description": "70-experiment STEM kit with crystals, volcanoes, and chemistry projects for ages 8+.",
+     "image_url": "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400"},
+    {"name": "Baby Activity Gym", "brand": "Fisher-Price", "price": 2200, "original_price": 3200, "cat": 6, "stock": 35,
+     "description": "Foldable baby play gym with 5 hanging toys, music and lights, for 0–12 months.",
+     "image_url": "https://images.unsplash.com/photo-1555169062-013468b47731?w=400"},
+    {"name": "Chess Set Wooden", "brand": "House of Chess", "price": 1600, "original_price": 2400, "cat": 6, "stock": 40,
+     "description": "Handcrafted wooden chess set with weighted pieces and storage compartment in base.",
+     "image_url": "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400"},
+    {"name": "Nerf Blaster Elite", "brand": "Hasbro", "price": 1400, "original_price": 2000, "cat": 6, "stock": 55,
+     "description": "Motorised Nerf Elite blaster with 12-dart clip and rapid-fire action, range up to 27m.",
+     "image_url": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400"},
+    {"name": "Kinetic Sand 2kg", "brand": "Spin Master", "price": 750, "original_price": 1100, "cat": 6, "stock": 70,
+     "description": "2kg of moldable kinetic sand with molds, never dries out and cleans up easily.",
+     "image_url": "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400"},
+
+    # ── More (cat 7) ──────────────────────────────────────────────────────────
     {"name": "Travel Backpack 40L", "brand": "Osprey", "price": 5500, "original_price": 8000, "cat": 7, "stock": 30,
      "description": "40L carry-on travel backpack with laptop compartment and hip belt for comfort.",
      "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
@@ -213,39 +370,86 @@ PRODUCTS_DATA = [
     {"name": "Leather Wallet Slim", "brand": "Bellroy", "price": 2200, "original_price": 3200, "cat": 7, "stock": 50,
      "description": "Ultra-slim genuine leather bifold wallet with RFID blocking and 8 card slots.",
      "image_url": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400"},
+    {"name": "Luggage 24-inch", "brand": "Samsonite", "price": 9800, "original_price": 14000, "cat": 7, "stock": 22,
+     "description": "Lightweight hardside spinner luggage with TSA lock, expandable and scratch-resistant.",
+     "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
+    {"name": "Travel Neck Pillow", "brand": "Cabeau", "price": 850, "original_price": 1300, "cat": 7, "stock": 70,
+     "description": "Memory foam travel neck pillow with snap-together front clasp and machine-washable cover.",
+     "image_url": "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400"},
+    {"name": "Portable Luggage Scale", "brand": "Etekcity", "price": 480, "original_price": 720, "cat": 7, "stock": 90,
+     "description": "Digital luggage scale up to 50kg with tare function and temperature sensor.",
+     "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
+    {"name": "Packing Cubes Set", "brand": "Eagle Creek", "price": 1100, "original_price": 1600, "cat": 7, "stock": 75,
+     "description": "Set of 4 lightweight packing cubes in different sizes with two-way zippers.",
+     "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
+    {"name": "Car Phone Mount", "brand": "Mpow", "price": 380, "original_price": 580, "cat": 7, "stock": 110,
+     "description": "Universal car dashboard phone mount with strong suction cup and 360° rotation.",
+     "image_url": "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400"},
+    {"name": "Desk Organizer Set", "brand": "Bambüsi", "price": 780, "original_price": 1150, "cat": 7, "stock": 65,
+     "description": "5-piece bamboo desk organiser set with pen holder, file tray and phone stand.",
+     "image_url": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400"},
+    {"name": "Multi-Tool Pocket Knife", "brand": "Leatherman", "price": 2800, "original_price": 4000, "cat": 7, "stock": 38,
+     "description": "18-in-1 stainless steel multi-tool with pliers, knife, screwdrivers and file.",
+     "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
+    {"name": "Portable Projector", "brand": "Anker", "price": 8500, "original_price": 12000, "cat": 7, "stock": 16,
+     "description": "Mini portable projector with 200 ANSI lumens, native 1080p and built-in battery.",
+     "image_url": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400"},
+    {"name": "Reusable Shopping Bags", "brand": "Baggu", "price": 320, "original_price": 480, "cat": 7, "stock": 150,
+     "description": "Set of 3 durable ripstop nylon reusable bags that fold into a tiny pouch.",
+     "image_url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400"},
+    {"name": "Umbrella Windproof", "brand": "Repel", "price": 750, "original_price": 1100, "cat": 7, "stock": 80,
+     "description": "Compact travel umbrella with 9-rib windproof frame, teflon coating, auto open/close.",
+     "image_url": "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400"},
 ]
+
+
+# Total products defined above — update this number when adding more products
+# so the seed function top-ups the DB on next deploy instead of skipping.
+EXPECTED_PRODUCT_COUNT = len(PRODUCTS_DATA)
 
 
 def seed_database():
     db = SessionLocal()
     try:
-        if db.query(Category).count() > 0:
-            print("Database already seeded.")
+        existing_count = db.query(Product).count()
+
+        if existing_count >= EXPECTED_PRODUCT_COUNT:
+            print(f"Database already has {existing_count} products — skipping seed.")
             return
 
-        # Categories
-        categories_names = ["Electronics", "Fashion", "Home", "Beauty", "Sports", "Books", "Toys", "More"]
-        cat_objs = []
-        for name in categories_names:
-            c = Category(name=name)
-            db.add(c)
-            cat_objs.append(c)
+        # If categories don't exist yet, create them
+        if db.query(Category).count() == 0:
+            categories_names = ["Electronics", "Fashion", "Home", "Beauty", "Sports", "Books", "Toys", "More"]
+            cat_objs = []
+            for name in categories_names:
+                c = Category(name=name)
+                db.add(c)
+                cat_objs.append(c)
+            db.flush()
+        else:
+            cat_objs = db.query(Category).order_by(Category.id).all()
+
+        # Create admin user if missing
+        if not db.query(User).filter(User.email == "admin@shopease.com").first():
+            admin = User(name="Admin User", email="admin@shopease.com",
+                         password_hash=hash_password("admin123"), is_admin=True)
+            db.add(admin)
+
+        # Create regular user if missing
+        user1 = db.query(User).filter(User.email == "john@example.com").first()
+        if not user1:
+            user1 = User(name="John Doe", email="john@example.com",
+                         password_hash=hash_password("pass1234"))
+            db.add(user1)
         db.flush()
 
-        # Admin user
-        admin = User(name="Admin User", email="admin@shopease.com",
-                     password_hash=hash_password("admin123"), is_admin=True)
-        db.add(admin)
+        # Get existing product names to avoid duplicates
+        existing_names = {p.name for p in db.query(Product.name).all()}
 
-        # Regular user
-        user1 = User(name="John Doe", email="john@example.com",
-                     password_hash=hash_password("pass1234"))
-        db.add(user1)
-        db.flush()
-
-        # Create products
         product_objs = []
         for pd in PRODUCTS_DATA:
+            if pd["name"] in existing_names:
+                continue
             p = Product(
                 name=pd["name"],
                 brand=pd["brand"],
@@ -260,8 +464,7 @@ def seed_database():
             product_objs.append(p)
         db.flush()
 
-        # Add ratings for all products
-        import random
+        # Add ratings for new products
         for product in product_objs:
             num_ratings = random.randint(2, 8)
             for _ in range(num_ratings):
@@ -271,10 +474,9 @@ def seed_database():
                 db.add(r)
 
         db.commit()
-        print(f"Database seeded with {len(product_objs)} products across {len(cat_objs)} categories.")
+        print(f"Seeded {len(product_objs)} new products. Total: {db.query(Product).count()}.")
     except Exception as e:
         db.rollback()
         print(f"Seed error: {e}")
-        # Don't crash startup — seeding failure is non-fatal
     finally:
         db.close()
