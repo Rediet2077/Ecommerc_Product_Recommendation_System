@@ -39,8 +39,8 @@ _default_origins = [
     "http://127.0.0.1:5173",
     "http://localhost:80",
     "http://localhost",
-    # Vercel deployments — all preview + production URLs for this project
-    "https://ecommerc-product-recommendation-system.vercel.app",
+    # Vercel deployments
+    "https://ecommerc-product-recommendation-sys.vercel.app",
 ]
 
 app.add_middleware(
