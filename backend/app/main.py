@@ -34,11 +34,13 @@ _raw_origins = os.getenv("ALLOWED_ORIGINS", "")
 _extra_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
 _default_origins = [
-    "http://localhost:5173",   # Vite frontend
-    "http://localhost:3000",   # Alternative frontend
+    "http://localhost:5173",   # Vite dev server
+    "http://localhost:3000",
     "http://127.0.0.1:5173",
-    "http://localhost:80",     # Docker nginx
-    "http://localhost",        # Docker nginx
+    "http://localhost:80",
+    "http://localhost",
+    # Vercel deployments — all preview + production URLs for this project
+    "https://ecommerc-product-recommendation-system.vercel.app",
 ]
 
 app.add_middleware(
