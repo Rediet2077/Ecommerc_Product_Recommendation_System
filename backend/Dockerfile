@@ -29,13 +29,13 @@ COPY --from=builder /install /usr/local
 # Copy application source
 COPY app/ ./app/
 COPY ML/ ./ML/
+COPY start.sh ./start.sh
+RUN chmod +x ./start.sh
 
 # Expose FastAPI port
 EXPOSE 8000
 
 # Environment defaults (can be overridden via Render dashboard or docker-compose)
-# DATABASE_URL defaults to a local path inside the container — override with
-# a persistent disk path (e.g. sqlite:////app/data/ecommerce.db) when a disk is attached.
 ENV DATABASE_URL="sqlite:///./ecommerce.db" \
     SECRET_KEY="change-me-in-production" \
     ALGORITHM="HS256" \
@@ -44,5 +44,5 @@ ENV DATABASE_URL="sqlite:///./ecommerce.db" \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app
 
-# Run with uvicorn
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use diagnostic start script so failures are visible in logs
+CMD ["bash", "./start.sh"]
