@@ -30,7 +30,8 @@ COPY --from=builder /install /usr/local
 COPY app/ ./app/
 COPY ML/ ./ML/
 COPY start.sh ./start.sh
-RUN chmod +x ./start.sh
+# Fix Windows CRLF line endings and make executable
+RUN sed -i 's/\r//' ./start.sh && chmod +x ./start.sh
 
 # Expose FastAPI port
 EXPOSE 8000
