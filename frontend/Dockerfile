@@ -10,15 +10,13 @@ RUN npm ci --frozen-lockfile
 # Copy source and build
 COPY . .
 
-# VITE_API_URL can be passed at build time:
-#   docker build --build-arg VITE_API_URL=https://api.example.com .
-ARG VITE_API_URL=http://localhost:8000
-ENV VITE_API_URL=${VITE_API_URL}
-
 RUN npm run build
 
 # ── Stage 2: production server (nginx) ────────────────────────────────────────
 FROM nginx:1.25-alpine AS runtime
+
+# Install gettext for envsubst
+RUN apk add --no-cache gettext
 
 # Remove default nginx static assets
 RUN rm -rf /usr/share/nginx/html/*
@@ -26,9 +24,10 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy built assets from builder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Custom nginx config — handles React Router (SPA) and proxies /api to backend
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy nginx config template
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf.template
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+# At startup, substitute BACKEND_URL env var into nginx config then start nginx
+CMD ["/bin/sh", "-c", "envsubst '$BACKEND_URL' < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
