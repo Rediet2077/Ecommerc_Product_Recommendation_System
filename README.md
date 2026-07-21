@@ -5,7 +5,6 @@
 - **Backend**: FastAPI + SQLAlchemy + SQLite
 - **Auth**: JWT Tokens
 
-## Quick Start
 
 ### 1. Start Backend
 ```bash

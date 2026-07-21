@@ -403,8 +403,6 @@ PRODUCTS_DATA = [
 ]
 
 
-# Total products defined above — update this number when adding more products
-# so the seed function top-ups the DB on next deploy instead of skipping.
 EXPECTED_PRODUCT_COUNT = len(PRODUCTS_DATA)
 
 
@@ -417,7 +415,6 @@ def seed_database():
             print(f"Database already has {existing_count} products — skipping seed.")
             return
 
-        # If categories don't exist yet, create them
         if db.query(Category).count() == 0:
             categories_names = ["Electronics", "Fashion", "Home", "Beauty", "Sports", "Books", "Toys", "More"]
             cat_objs = []
@@ -429,16 +426,15 @@ def seed_database():
         else:
             cat_objs = db.query(Category).order_by(Category.id).all()
 
-        # Create admin user if missing
         if not db.query(User).filter(User.email == "admin@shopease.com").first():
             admin = User(name="Admin User", email="admin@shopease.com",
                          password_hash=hash_password("admin123"), is_admin=True)
             db.add(admin)
 
         # Create regular user if missing
-        user1 = db.query(User).filter(User.email == "john@example.com").first()
+        user1 = db.query(User).filter(User.email == "redietsharew@gmail.com").first()
         if not user1:
-            user1 = User(name="John Doe", email="john@example.com",
+            user1 = User(name="Rediet", email="redietsharew@gmail.com",
                          password_hash=hash_password("pass1234"))
             db.add(user1)
         db.flush()
